@@ -162,7 +162,7 @@
   }
 }
 
-- (void)__setSelectedFromUIKit:(BOOL)selected;
+- (void)__setSelectedFromUIKit:(BOOL)selected
 {
   // Note: Race condition could mean redundant sets. Risk is low.
   if (ASLockedSelf(_selected != selected)) {
@@ -172,7 +172,7 @@
   }
 }
 
-- (void)__setHighlightedFromUIKit:(BOOL)highlighted;
+- (void)__setHighlightedFromUIKit:(BOOL)highlighted
 {
   // Note: Race condition could mean redundant sets. Risk is low.
   if (ASLockedSelf(_highlighted != highlighted)) {
