@@ -56,7 +56,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/pinterest/PINRemoteImage.git", .upToNextMajor(from: "3.0.3")),
-        .package(url: "https://github.com/Instagram/IGListKit", revision: "c2cea36534fe08e28d7c060495970785cd956593"),
+        .package(url: "https://github.com/Instagram/IGListKit", branch: "main"),
     ],
     targets: [
         .target(
