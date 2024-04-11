@@ -48,15 +48,10 @@ let package = Package(
         .library(
             name: "AsyncDisplayKit",
             type: .static,
-            targets: ["AsyncDisplayKit"]),
-        .library(
-            name: "AsyncDisplayKitIGListKit",
-            type: .static,
-            targets: ["AsyncDisplayKitIGListKit"]),
+            targets: ["AsyncDisplayKit"])
     ],
     dependencies: [
         .package(url: "https://github.com/pinterest/PINRemoteImage.git", .upToNextMajor(from: "3.0.3")),
-        .package(url: "https://github.com/Instagram/IGListKit", branch: "main"),
     ],
     targets: [
         .target(
@@ -64,13 +59,7 @@ let package = Package(
             dependencies: ["PINRemoteImage"],
             path: "spm/Sources/AsyncDisplayKit",
             cSettings: headersSearchPath + sharedDefines + IGListKit(enabled: false)
-        ),
-        .target(
-            name: "AsyncDisplayKitIGListKit",
-            dependencies: ["IGListKit", "PINRemoteImage"],
-            path: "spm/Sources/AsyncDisplayKitIGListKit/AsyncDisplayKit",
-            cSettings: headersSearchPath + sharedDefines + IGListKit(enabled: true)
-        ),
+        )
     ],
     cLanguageStandard: .c11,
     cxxLanguageStandard: .cxx11
