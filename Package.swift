@@ -15,13 +15,6 @@ let sharedDefines: [CSetting] = [
     .define("IG_LIST_COLLECTION_VIEW", to: "0"),
 ]
 
-func IGListKit(enabled: Bool, diffOnly: Bool) -> [CSetting] {
-    [
-        .define("AS_IG_LIST_KIT", to: enabled && !diffOnly ? "1" : "0"),
-        .define("AS_IG_LIST_DIFF_KIT", to: enabled ? "1" : "0"),
-    ]
-}
-
 let package = Package(
     name: "Texture",
     platforms: [
@@ -37,13 +30,6 @@ let package = Package(
                 "AsyncDisplayKit",
             ]
         ),
-        .library(
-            name: "AsyncDisplayKitIGListKit",
-            type: .static,
-            targets: [
-                "AsyncDisplayKitIGListKit",
-            ]
-        ),
     ],
     dependencies: [
         .package(url: "https://github.com/pinterest/PINRemoteImage.git", branch: "master"),
@@ -52,30 +38,15 @@ let package = Package(
         .target(
             name: "AsyncDisplayKit",
             dependencies: [
-                .product(name: "IGListDiffKit", package: "IGListKit"),
                 "PINRemoteImage",
             ],
             path: "spm/Sources/AsyncDisplayKit",
-            cSettings: sharedDefines + IGListKit(enabled: true, diffOnly: true),
+            cSettings: sharedDefines,
             linkerSettings: [
                 .linkedFramework("AVFoundation"),
                 .linkedFramework("CoreMedia"),
             ]
-        ),
-        .target(
-            name: "AsyncDisplayKitIGListKit",
-            dependencies: [
-                .product(name: "IGListKit", package: "IGListKit"),
-                .product(name: "IGListDiffKit", package: "IGListKit"),
-                "PINRemoteImage",
-            ],
-            path: "spm/Sources/AsyncDisplayKitIGListKit",
-            cSettings: sharedDefines + IGListKit(enabled: true, diffOnly: false),
-            linkerSettings: [
-                .linkedFramework("AVFoundation"),
-                .linkedFramework("CoreMedia"),
-            ]
-        ),
+        )
     ],
     cLanguageStandard: .c11,
     cxxLanguageStandard: .cxx11
