@@ -10,8 +10,6 @@
 #import "ASAvailability.h"
 #import "ASNetworkImageNode.h"
 
-#if AS_USE_VIDEO
-
 @class AVAsset, AVPlayer, AVPlayerLayer, AVPlayerItem, AVVideoComposition, AVAudioMix;
 @protocol ASVideoNodeDelegate;
 
@@ -167,5 +165,3 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
-
-#endif

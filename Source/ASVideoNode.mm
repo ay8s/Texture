@@ -9,8 +9,6 @@
 
 #import "ASVideoNode.h"
 
-#if AS_USE_VIDEO
-
 #import <AVFoundation/AVFoundation.h>
 #import "ASDisplayNode+FrameworkPrivate.h"
 #import "ASDisplayNode+Subclasses.h"
@@ -858,4 +856,3 @@ static NSString * const kRate = @"rate";
 
 @end
 
-#endif
